@@ -52,7 +52,7 @@ const Hero = () => {
           </div>
         </>
       ) : (
-        <div className="p-10 font-winky bg-[url('./image3.jpg')] bg-cover bg-center h-full">
+        <div className="p-10 font-winky bg-[url('./public/image3.jpg')] bg-cover bg-center h-full">
           {!image ? (
             <div className="flex flex-col gap-5 items-center m-30">
               <h2 className="text-4xl font-bold text-center mb-8">
