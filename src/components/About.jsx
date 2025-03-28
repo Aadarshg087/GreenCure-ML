@@ -9,10 +9,6 @@ const contributors = [
     linkedin: "https://www.linkedin.com/in/mayank1008agarwal/",
   },
   { name: "Pritpal Singh", linkedin: "https://linkedin.com/in/alicejohnson" },
-  {
-    name: "Anamika Pandey",
-    linkedin: "https://www.linkedin.com/in/anamika-pandey76/",
-  },
 ];
 
 export default function About() {

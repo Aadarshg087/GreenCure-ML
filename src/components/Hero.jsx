@@ -47,7 +47,7 @@ const Hero = () => {
     <>
       {loading ? (
         <>
-          <div className="w-full p-20 bg-red-400 text-white text-center">
+          <div className="w-full p-50 bg-slate-200 text-black font-inter text-center">
             <h1 className="font-bold text-xl">Hang On! Loading...</h1>
           </div>
         </>
@@ -71,15 +71,23 @@ const Hero = () => {
           ) : (
             <>
               <div className="flex justify-around  mt-10 mb-5">
-                <img src={preview} className="h-[300px] " alt="Image Preview" />
+                <img
+                  src={preview}
+                  className="h-[300px] mb-5"
+                  alt="Image Preview"
+                />
               </div>
               {prediction ? (
-                <h2 className="font-bold font-winky text-2xl text-center mb-30 ">
-                  Prediction: {prediction.prediction}
-                </h2>
+                <div className="w-full p-10 text-black  text-center">
+                  <h1 className="text-2xl text-black ">
+                    {prediction.prediction}
+                  </h1>
+                </div>
               ) : (
-                <div className="w-full p-10 text-black text-center">
-                  <h1 className="font-bold text-xl">Hang On! Loading...</h1>
+                <div className="w-full p-10 text-black  text-center">
+                  <h1 className="text-2xl text-gray-800 animate-pulse">
+                    Loading, please wait...
+                  </h1>
                 </div>
               )}
             </>
