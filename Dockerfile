@@ -10,7 +10,10 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the app
+# Copy env file before build
+COPY .env .env
+
+# Copy rest of the app
 COPY . .
 
 # Build the app for production
@@ -31,7 +34,7 @@ COPY --from=builder /app/package*.json ./
 RUN npm install -g serve
 
 # Expose the port that the app will run on
-EXPOSE 4173
+EXPOSE 3000
 
 # Run the app
-CMD ["serve", "-s", "dist", "-l", "4173"]
+CMD ["serve", "-s", "dist", "-l", "3000"]

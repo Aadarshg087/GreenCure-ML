@@ -19,7 +19,8 @@ const Hero = () => {
         const formData = new FormData();
         formData.append("file", image);
         try {
-          const url = "http://44.218.112.240:8000/predict";
+          const url = `${import.meta.env.VITE_REACT_APP_API_URL}/predict`;
+          console.log(url);
           console.log(formData);
           const res = await fetch(url, { method: "POST", body: formData });
           const result = await res.json();
