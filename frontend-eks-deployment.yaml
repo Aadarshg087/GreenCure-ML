@@ -1,19 +1,22 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: leaf
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: greencure-deployment
   namespace: leaf
-  labels:
-    app: greencure
+  name: greencure-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: greencure
+      app.kubernetes.io/name: greencure
   template:
     metadata:
       labels:
-        app: greencure
+        app.kubernetes.io/name: greencure
     spec:
       containers:
       - name: greencure
@@ -24,28 +27,29 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: greencure-svc
   namespace: leaf
+  name: greencure-svc
 spec:
-  selector:
-    app: greencure
   ports:
   - port: 80
     targetPort: 4173
+    protocol: TCP
   type: NodePort
+  selector:
+    app.kubernetes.io/name: greencure
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: greencure-ingress
   namespace: leaf
+  name: greencure-ingress
   annotations:
+    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/backend-protocol: HTTP
-    kubernetes.io/ingress.class: alb
 spec:
+  ingressClassName: alb
   rules:
   - http:
       paths:
