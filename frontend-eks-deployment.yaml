@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greencure-deployment
+  namespace: leaf
+  labels:
+    app: greencure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greencure
+  template:
+    metadata:
+      labels:
+        app: greencure
+    spec:
+      containers:
+      - name: greencure
+        image: aadarshg619/greencure2:latest
+        ports:
+        - containerPort: 4173
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: greencure-svc
+  namespace: leaf
+spec:
+  selector:
+    app: greencure
+  ports:
+  - port: 80
+    targetPort: 4173
+  type: NodePort

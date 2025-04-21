@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy dependency definitions
 COPY package*.json ./
 
+# Set environment variable before build
+ENV VITE_REACT_APP_API_URL=http://backend-svc:8000
+
 # Install dependencies
 RUN npm install
 
