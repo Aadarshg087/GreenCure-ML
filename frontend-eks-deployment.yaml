@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: greencure
-        image: aadarshg619/greencure4:latest
+        image: aadarshg619/greencure5:latest
         ports:
         - containerPort: 4173
 ---
